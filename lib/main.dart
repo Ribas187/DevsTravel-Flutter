@@ -1,4 +1,7 @@
+import 'package:DevsTravel/src/pages/City.dart';
 import 'package:DevsTravel/src/pages/Continent.dart';
+import 'package:DevsTravel/src/pages/Favorites.dart';
+import 'package:DevsTravel/src/pages/ListCities.dart';
 import 'package:DevsTravel/src/pages/Search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -33,7 +36,10 @@ class MyApp extends StatelessWidget {
         '/preload': (context) => PreloadPage(),
         '/home': (context) => HomePage(),
         '/search': (context) => SearchPage(),
-        '/continent': (context) => ContinentPage()
+        '/continent': (context) => ContinentPage(),
+        '/listCities': (context) => ListCitiesPage(),
+        '/city': (context) => CityPage(),
+        '/favorites': (context) => FavoritesPage(),
       },
       initialRoute: '/preload',
     );

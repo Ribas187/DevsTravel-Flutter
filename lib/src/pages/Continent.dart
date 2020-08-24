@@ -14,6 +14,14 @@ class ContinentPage extends StatelessWidget {
     fontWeight: FontWeight.bold,
   );
 
+  void handleSeeCities(context, continentIndex) {
+    Navigator.pushNamed(context, '/listCities', arguments: continentIndex);
+  }
+
+  void handleCityBox(context, cityData) {
+    Navigator.pushNamed(context, '/city', arguments: cityData);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<AppData>(
@@ -42,29 +50,41 @@ class ContinentPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    FlatButton(
+                    Container(
+                      margin: EdgeInsets.only(left: 15),
                       child: Text(
-                          '${appdata.data[index]['name']} (${cities.length})'),
-                      onPressed: () {},
+                        '${appdata.data[index]['name']} (${cities.length})',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Helvetica Neue',
+                        ),
+                      ),
                     ),
                     FlatButton(
-                      child: Text('Ver cidades'),
-                      onPressed: () {},
+                      child: Text(
+                        'Ver mais cidades',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Helvetica Neue',
+                          color: Colors.grey,
+                        ),
+                      ),
+                      onPressed: () => handleSeeCities(context, index),
                     ),
                   ],
                 ),
                 Container(
                   margin: EdgeInsets.only(bottom: 15),
-                  height: 130,
+                  height: 150,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: cities.length,
+                    itemCount: 5,
                     itemBuilder: (cityContext, cityIndex) {
                       return CityBox(
                         data: cities[cityIndex],
-                        onTap: (cityData) {
-                          print(cityData['name']);
-                        },
+                        onTap: (cityData) => handleCityBox(context, cityData),
                       );
                     },
                   ),

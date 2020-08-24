@@ -39,6 +39,8 @@ class _PreloadPage extends State<PreloadPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Center(
